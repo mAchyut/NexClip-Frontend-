@@ -1,153 +1,196 @@
-# NexClip
+# ![NexClip](https://github.com/user-attachments/assets/223e89eb-97ed-4bd4-b895-32ac2df71a60) NexClip
 
-NexClip is an immersive video-sharing platform built to engage users in a seamless experience of exploring, uploading, and interacting with videos. This repository hosts the **frontend** of NexClip, focusing on a modern, responsive interface that delivers a YouTube-like experience with additional personalized features. Whether you're looking to share content, follow favorite channels, or simply explore, NexClip is designed to make every interaction engaging and enjoyable.
+NexClip is a next-generation video-sharing platform that enables users to seamlessly explore, upload, and interact with videos. Designed with a clean UI, NexClip offers users a streamlined experience from watching content as a guest to managing their own channels and interacting with others.
 
 ---
 
 ## Table of Contents
 
-1. [About the Project](#about-the-project)
-2. [Features](#features)
-3. [Screenshots](#screenshots)
-4. [Tech Stack](#tech-stack)
-5. [Getting Started](#getting-started)
-6. [Folder Structure](#folder-structure)
-7. [Key Components](#key-components)
-8. [Contributing](#contributing)
-9. [License](#license)
+- [About the Project](#about-the-project)
+- [Application Features Guide](#application-features-guide)
+- [Screenshots](#screenshots)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Folder Structure](#folder-structure)
+- [Key Components](#key-components)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
 ## About the Project
 
-NexClip is designed for users to effortlessly interact with video content. Inspired by the features of top video-sharing platforms, NexClip integrates video uploads, personalized feeds, social engagement tools, and dynamic search capabilities to provide users with a feature-rich experience. Built using React, the project showcases a clean, responsive UI with intuitive navigation, accessible features, and efficient content loading.
+NexClip focuses on providing a refined and responsive platform for video content, supporting features from user profiles and channel management to subscription and interactive video playback. Built with React, it employs component-driven development for a robust, scalable user experience.
 
 ---
 
-## Features
+## Application Features Guide
 
-- **User Authentication & Profiles**
-  - Secure registration, login, and logout.
-  - Profile management options to update user details and passwords.
+### Guest Access
+- **Overview**: Guests can freely browse and watch videos without an account. However, subscribing, liking, commenting, and personalized recommendations require sign-up.
 
-- **Video Interaction & Management**
-  - Upload videos and interact with them through likes, comments, and shares.
-  - Subscribe to channels, track watch history, and receive video recommendations.
+### Sign Up
+- **Required Information**:
+  - **Email**: For account verification and login.
+  - **Username**: Unique identifier for each user.
+  - **Password**: Secure access to the account.
+  - **Avatar**: Personalize the user profile with an image.
+- **Optional Information**:
+  - **Cover Image**: Unique cover photo for the user’s channel.
+  - **Full Name**: Personal identifier.
+- Upon registration, users are automatically logged in and ready to explore the platform.
 
-- **User Dashboard**
-  - Displays user metrics like likes, subscriptions, and video view counts for quick insights.
+### Login & Logout
+- **Login**: Access an account using the registered email/username and password.
+- **Logout**: Securely exit the account anytime.
 
-- **Advanced Search**
-  - Dynamic search functionality to explore and discover videos.
+### Profile & Settings
+- **Profile**: Accessed from the top-right profile icon, where users can:
+  - View essential account details.
+  - Change avatar and cover image (up to 10MB).
+- **Password Update**: Update password with current and new password fields.
+- **Details Update**: Update personal info like email and full name.
 
-- **Optimized Loading**
-  - Lazy loading across various sections to ensure efficient data handling and fast loading speeds.
+### Video Search
+- **Search Bar**: Allows users to search for videos by keywords or phrases, simplifying content discovery.
+
+### Publish Video
+- Publish videos with customized titles, descriptions, and thumbnails directly from the settings.
+
+### Subscriptions
+- The **Subscriptions Page** lists all followed channels, providing easy access to favorite creators.
+
+### Dashboard
+- **Metrics Overview**: Displays subscriber count, total views, and total likes across all user videos.
+
+### Channel Overview
+- **Personalization**:
+  - Customize channel with an avatar and cover image.
+  - Display the number of subscribers and subscriptions.
+- **Video Management**:
+  - Publish or unpublish videos.
+  - Edit video details, including title, description, and thumbnail.
+  - Control private video access for exclusive content.
+
+### Watch History
+- **Overview**: Tracks all watched videos.
+- **Options**: Users can delete individual history items or clear all history at once.
+
+### Upcoming Features
+- **Playlists**: Organize videos into custom playlists.
+- **Your Videos**: Dedicated section for managing all uploaded videos.
+- **Liked Videos**: Quick access to videos the user has liked.
+
+### Video Interactions
+- **Like**: Engage with content through likes.
+- **Share**: Share videos via WhatsApp, email, Telegram, or by copying a link.
+- **Commenting**: Interact through comments with edit/delete options.
+- **Subscribe**: Follow favorite channels.
+- **Video Description**: Detailed description located below the video player.
 
 ---
 
 ## Screenshots
 
-| Page           | Preview                            |
-|----------------|------------------------------------|
-| **Homepage**   | ![Homepage](link-to-homepage-screenshot) |
-| **Video View** | ![Video View](link-to-video-view-screenshot) |
-| **Dashboard**  | ![Dashboard](link-to-dashboard-screenshot) |
-| **Search**     | ![Search Results](link-to-search-screenshot) |
+| Feature       | Screenshot                                   |
+|---------------|---------------------------------------------|
+| **Homepage**  | ![Homepage](public/homepage-screenshot.png)    |
+| **Video View**| ![Video View](public/video-view-screenshot.png) |
+| **Dashboard** | ![Dashboard](public/dashboard-screenshot.png)  |
+| **Search**    | ![Search](public/search-screenshot.png)        |
+
+> Replace screenshot paths with the actual paths of your screenshots in the repository.
 
 ---
 
 ## Tech Stack
 
-NexClip uses a modern tech stack to create a seamless, scalable experience:
-
-- **React** - Frontend framework for component-driven development.
-- **React Router** - Manages routing and navigation.
-- **React Hook Form** - Streamlines form handling and validation.
-- **Tailwind CSS** - A utility-first CSS framework for flexible, responsive design.
-- **Axios** - Handles API requests to the backend.
-- **Cloudinary** - Manages video uploads and media transformations.
+- **React** - Fast, scalable frontend development.
+- **React Router** - For single-page app navigation.
+- **React Hook Form** - Form handling and validation.
+- **Tailwind CSS** - Custom, responsive styling.
+- **Axios** - HTTP requests for backend communication.
+- **Cloudinary** - Image and video management.
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-Ensure that Node.js and npm are installed on your machine.
+- Node.js and npm installed.
 
 ### Installation
 
-1. **Clone the Repository**
+1. **Clone the Repository**:
    ```bash
    git clone https://github.com/yourusername/NexClip.git
    cd NexClip
    ```
 
-2. **Install Dependencies**
+2. **Install Dependencies**:
    ```bash
    npm install
    ```
 
-3. **Configure Environment Variables**
-   - Create a `.env` file in the root directory and add the following:
+3. **Configure Environment Variables**:
+   - Create a `.env` file in the root directory and add:
      ```env
-     REACT_APP_API_URL=<your-backend-api-url>
-     REACT_APP_CLOUDINARY_CLOUD_NAME=<your-cloudinary-cloud-name>
-     REACT_APP_CLOUDINARY_API_KEY=<your-cloudinary-api-key>
+     REACT_APP_API_URL=<backend-api-url>
+     REACT_APP_CLOUDINARY_CLOUD_NAME=<cloudinary-cloud-name>
+     REACT_APP_CLOUDINARY_API_KEY=<cloudinary-api-key>
      ```
 
-4. **Run the Application**
+4. **Run the Application**:
    ```bash
    npm start
    ```
-   The app will start on `http://localhost:3000`.
+   Open `http://localhost:3000` in your browser.
 
 ---
 
 ## Folder Structure
 
-NexClip follows a modular and scalable structure:
-
 ```
 NexClip/
-├── public/                     # Public assets
-├── src/                        # Source files
-│   ├── components/             # Reusable components
-│   ├── pages/                  # Page components for each route
-│   ├── services/               # API request handlers
-│   ├── hooks/                  # Custom React hooks
-│   ├── context/                # Global state management
-│   └── styles/                 # Custom styling and Tailwind config
-└── README.md                   # Project documentation
+├── public/                 # Static assets
+├── src/                    # Source files
+│   ├── components/         # Reusable components
+│   ├── pages/              # App pages
+│   ├── services/           # API requests
+│   ├── hooks/              # Custom hooks
+│   ├── context/            # Global state providers
+│   └── styles/             # Styling files
+└── README.md               # Project documentation
 ```
 
 ---
 
 ## Key Components
 
-- **AuthService** - Manages authentication workflows and user session state.
-- **VideoCard** - A cleanly styled card to display video thumbnails, titles, and relevant details.
-- **SearchResults** - Dynamic search component that displays results in an organized, accessible format.
-- **WatchHistory** - Provides a horizontally scrollable watch history, enhancing user accessibility.
-- **SubscriptionCard** - Lists subscribed channels with an interactive hover effect for a modern touch.
+- **AuthService** - Manages user authentication logic.
+- **VideoCard** - Displays video previews.
+- **SearchResults** - Shows search results.
+- **WatchHistory** - Horizontally scrollable history section.
+- **SubscriptionCard** - Showcases subscribed channels with hover effects.
 
 ---
 
 ## Contributing
 
-We welcome contributions! To get involved:
+We welcome contributions! To contribute:
 
 1. **Fork the Project**
-2. **Create a Feature Branch**
+2. **Create a Feature Branch**  
    ```bash
-   git checkout -b feature/AmazingFeature
+   git checkout -b feature/YourFeature
    ```
-3. **Commit Your Changes**
+3. **Commit Your Changes**  
    ```bash
-   git commit -m 'Add AmazingFeature'
+   git commit -m 'Add new feature'
    ```
-4. **Push to Branch**
+4. **Push to Branch**  
    ```bash
-   git push origin feature/AmazingFeature
+   git push origin feature/YourFeature
    ```
 5. **Open a Pull Request**
 
@@ -155,9 +198,18 @@ We welcome contributions! To get involved:
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+This project is distributed under the MIT License. See `LICENSE` for details.
 
 ---
 
-Thank you for checking out NexClip! We hope you enjoy exploring, interacting, and building with it. For any issues or feature requests, feel free to open an issue on GitHub.
+**NexClip** aims to provide an unparalleled, user-friendly platform for video sharing and discovery. Dive in, share your creations, and enjoy the NexClip experience!
+```
 
+---
+
+To implement this:
+
+1. Replace the `logo.png` and screenshot paths in the README with actual paths.
+2. Copy the markdown code and paste it into the `README.md` file of your GitHub repository.
+
+This version improves readability, maintains professionalism, and makes the content visually structured for clarity and engagement. Let me know if there’s anything more you’d like to enhance!
