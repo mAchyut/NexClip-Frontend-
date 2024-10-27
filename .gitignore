@@ -1,0 +1,40 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+
+# Operating System files
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# Other files to ignore
+coverage/
+*.tgz
+*.local
+*.swp
+*.swo
