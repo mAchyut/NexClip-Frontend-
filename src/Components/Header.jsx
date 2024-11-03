@@ -12,33 +12,43 @@ import {
   FaUserCircle,
   FaVideo,
   FaYoutube,
+  FaBars,
 } from "react-icons/fa";
-import Sidebar from "./CustomComponent/Sidebar"; // Ensure you import your Sidebar component
+import { Sidebar as Usermenu } from "./CustomComponent/Sidebar"; // Import Sidebar component
 
 function Header({ Outlet }) {
   const userLoginState = useSelector((state) => state.auth.status);
   const userData = useSelector((state) => state.auth?.userData);
-  const [isSidebarOpen, setSidebarOpen] = useState(false); // Set initial state to false
+  const [isSidebarOpen, setSidebarOpen] = useState(false); // Sidebar state
+  const [isUsermenuOpen, setIsUsermenuOpen] = useState(false); // usermenu state
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
 
   const toggleSidebar = () => {
-    setSidebarOpen((prev) => !prev); // Toggle sidebar visibility
+    setSidebarOpen((prev) => !prev); // Toggle sidebar
   };
+  const toggleUsermenu = () => {
+    setIsUsermenuOpen((prev) => !prev); // Toggle usermenu
+  };
+
   useEffect(() => {
     !userLoginState && setSidebarOpen(false);
   }, [userLoginState]);
 
   const searchQuery = () => {
     if (query) {
-      navigate(`/results?search_query=${encodeURIComponent(query?.trim())}`);
+      navigate(`/results?search_query=${encodeURIComponent(query.trim())}`);
     }
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-col h-screen md:flex-row">
       {/* Sidebar Section */}
-      <aside className="w-64 bg-gray-900 text-white flex flex-col justify-between p-4 fixed h-screen">
+      <aside
+        className={`fixed top-0 left-0 h-full w-64 bg-gray-900 text-white flex flex-col justify-between p-4 transition-transform transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 z-20`}
+      >
         <div>
           {/* NexClip Logo */}
           <Link to="/" className="mb-6 flex items-center space-x-3">
@@ -72,7 +82,7 @@ function Header({ Outlet }) {
 
             <NavLink
               to={`/${userData?._id}/mysubscriptions`}
-              className="hover:text-gray-300 flex items-center mt-4  transition-colors duration-200"
+              className="hover:text-gray-300 flex items-center mt-4 transition-colors duration-200"
             >
               <span className="text-xl mr-4">{<FaRegNewspaper />}</span>{" "}
               Subscriptions
@@ -81,7 +91,7 @@ function Header({ Outlet }) {
             {userLoginState && (
               <NavLink
                 to="/channel/dashboard/stats"
-                className="hover:text-gray-300 flex items-center mt-4  transition-colors duration-200"
+                className="hover:text-gray-300 flex items-center mt-4 transition-colors duration-200"
               >
                 <span className="text-xl mr-4">{<FaLaptop />}</span> Dashboard
               </NavLink>
@@ -93,7 +103,7 @@ function Header({ Outlet }) {
             {userLoginState && (
               <NavLink
                 to={`channel/${userData?.username}`}
-                className="hover:text-gray-300 flex items-center mt-4  transition-colors duration-200"
+                className="hover:text-gray-300 flex items-center mt-4 transition-colors duration-200"
               >
                 <span className="text-xl mr-4">{<FaYoutube />}</span> Your
                 channel
@@ -102,21 +112,21 @@ function Header({ Outlet }) {
 
             <NavLink
               to="/history"
-              className="hover:text-gray-300 flex items-center mt-4  transition-colors duration-200"
+              className="hover:text-gray-300 flex items-center mt-4 transition-colors duration-200"
             >
               <span className="text-xl mr-4">{<FaHistory />}</span> History
             </NavLink>
 
             <NavLink
               to="/playlists"
-              className="hover:text-gray-300 flex items-center mt-4  transition-colors duration-200"
+              className="hover:text-gray-300 flex items-center mt-4 transition-colors duration-200"
             >
               <span className="text-xl mr-4">{<FaListAlt />}</span> Playlists
             </NavLink>
 
             <NavLink
               to="/your-videos"
-              className="hover:text-gray-300 flex items-center mt-4  transition-colors duration-200"
+              className="hover:text-gray-300 flex items-center mt-4 transition-colors duration-200"
             >
               <span className="text-xl mr-4">{<FaVideo />}</span> Your videos
             </NavLink>
@@ -124,7 +134,7 @@ function Header({ Outlet }) {
             {userLoginState && (
               <NavLink
                 to="/liked-videos"
-                className="hover:text-gray-300 flex items-center mt-4  transition-colors duration-200"
+                className="hover:text-gray-300 flex items-center mt-4 transition-colors duration-200"
               >
                 <span className="text-xl mr-4">{<FaThumbsUp />}</span> Liked
                 videos
@@ -136,19 +146,27 @@ function Header({ Outlet }) {
         {/* Settings */}
         <NavLink
           to="/NexClip/info"
-          className="hover:text-gray-300 flex items-center mt-4  transition-colors duration-200"
+          className="hover:text-gray-300 flex items-center mt-4 transition-colors duration-200"
         >
           <span className="text-xl mr-2">{<FaInfoCircle />}</span> 𝒾𝓃𝒻𝒪
         </NavLink>
       </aside>
 
       {/* Main Content Section */}
-      <div className="flex-grow bg-gray-100 ml-64 overflow-auto">
+      <div className="flex-grow bg-gray-100 md:ml-64 overflow-auto">
         {/* Topbar */}
-        <header className="bg-gray-900 text-white flex justify-between items-center p-3 fixed top-0 left-64 w-[calc(100%-16rem)] z-10">
-          {/* Search Bar (Center) */}
-          <div className="flex items-center justify-center w-full">
-            <div className="flex w-1/2 bg-gray-700 bg-opacity-80 rounded-full shadow-lg">
+        <header className="bg-gray-900 text-white flex justify-between items-center p-3 fixed top-0 left-0 w-full md:left-64 md:w-[calc(100%-16rem)] z-10">
+          {/* Hamburger Icon (Only on Small Screens) */}
+          <button
+            onClick={toggleSidebar}
+            className="text-2xl md:hidden text-gray-300 hover:text-blue-500 mr-4"
+          >
+            <FaBars />
+          </button>
+
+          {/* Search Bar */}
+          <div className="flex items-center justify-center flex-grow">
+            <div className="flex w-full md:w-1/2 bg-gray-700 bg-opacity-80 rounded-full shadow-lg">
               <input
                 type="text"
                 placeholder="Search..."
@@ -169,45 +187,50 @@ function Header({ Outlet }) {
             </div>
           </div>
 
-          {/* Profile Icon (Right) */}
+          {/* Profile or Login/Signup */}
           <div className="flex items-center">
-            {/* Sidebar toggle button */}
-            <button
-              onClick={toggleSidebar}
-              className="text-3xl text-gray-300 hover:text-blue-500 border border-gray-900 hover:border-gray-700 transition-colors duration-300 mr-6"
-            >
-              {userLoginState && <FaUserCircle />}
-            </button>
-
-            {/* Login and Signup Links */}
-            {!userLoginState && (
-              <Link
-                to={"/login"}
-                className="mr-4 border border-gray-700 hover:bg-gray-700 rounded-full px-4 py-2 text-gray-300 transition-all duration-300"
+            {userLoginState ? (
+              <button
+                onClick={toggleUsermenu}
+                className="text-3xl text-gray-300 hover:text-blue-500 border border-gray-900 hover:border-gray-700 transition-colors duration-300 mx-4"
               >
-                Login
-              </Link>
-            )}
-            {!userLoginState && (
-              <Link
-                to={"/signup"}
-                className="border border-gray-700 hover:bg-gray-700 rounded-full px-4 py-2 text-gray-300 transition-all duration-300"
-              >
-                Signup
-              </Link>
+                <FaUserCircle />
+              </button>
+            ) : (
+              <>
+                <Link
+                  to={"/login"}
+                  className="mr-4 border border-gray-700 hover:bg-gray-700 rounded-full px-4 py-2 text-gray-300 transition-all duration-300"
+                >
+                  Login
+                </Link>
+                <Link
+                  to={"/signup"}
+                  className="border border-gray-700 hover:bg-gray-700 rounded-full px-4 py-2 text-gray-300 transition-all duration-300"
+                >
+                  Signup
+                </Link>
+              </>
             )}
           </div>
         </header>
 
-        {/* Sidebar component */}
+        {/* Sidebar Component (Responsive) */}
+        <div
+          className={`fixed inset-0 bg-black bg-opacity-50 z-10 ${
+            isSidebarOpen ? "block" : "hidden"
+          } md:hidden`}
+          onClick={toggleSidebar}
+        />
+        {/* usermenu component */}
         <div>
-          <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
+          <Usermenu isOpen={isUsermenuOpen} onClose={toggleUsermenu} />
         </div>
 
         {/* Page Content */}
-        <div className=" bg-gray-900 min-h-screen overflow-y-auto">
+        <main className="pt-16 md:pt-0 bg-gray-900 min-h-screen overflow-y-auto">
           <Outlet />
-        </div>
+        </main>
       </div>
     </div>
   );

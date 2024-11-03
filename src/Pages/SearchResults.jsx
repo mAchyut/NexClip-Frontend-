@@ -104,9 +104,11 @@ function SearchResults() {
             <img
               src={video?.owner?.avatar}
               alt={video?.owner?.username}
-              className="w-12 h-12 rounded-full object-cover border-2 border-gray-500"
+              className="min-w-12 h-12 w-12 rounded-full object-cover border-2 border-gray-500"
             />
-            <span className="text-gray-300">{video?.owner?.username}</span>
+            <span className="text-gray-300 hidden md:block">
+              {video?.owner?.username}
+            </span>
           </Link>
         </div>
       ))}

@@ -8,18 +8,18 @@ import authService from "./backend/auth.js";
 import { login, logout } from "./store/authSlice.js";
 import LoadingIcon from "./Logo/Loading3.gif";
 
-// window.addEventListener("keydown", (e) => {
-//   // Disable specific key combinations
-//   if (
-//     (e.ctrlKey && e.shiftKey && e.key === "C") ||
-//     (e.ctrlKey && e.key === "U") ||
-//     e.key === "F12"
-//   ) {
-//     // F12 for opening dev tools
-//     e.preventDefault();
-//     alert("This action has been disabled.");
-//   }
-// });
+window.addEventListener("keydown", (e) => {
+  // Disable specific key combinations
+  if (
+    (e.ctrlKey && e.shiftKey && e.key === "C") ||
+    (e.ctrlKey && e.key === "U") ||
+    e.key === "F12"
+  ) {
+    // F12 for opening dev tools
+    e.preventDefault();
+    alert("This action has been disabled.");
+  }
+});
 
 // Disable context menu
 window.addEventListener("contextmenu", (e) => {
