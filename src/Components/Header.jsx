@@ -32,7 +32,7 @@ function Header({ Outlet }) {
   };
 
   useEffect(() => {
-    !userLoginState && setSidebarOpen(false);
+    !userLoginState && setIsUsermenuOpen(false); //usermenu closes on logout
   }, [userLoginState]);
 
   const searchQuery = () => {
